@@ -38,14 +38,14 @@ public class Employee {
         this.daysVacation = daysVacation;
     }
     
-    public int getDaysVacation() {
+    public final int getDaysVacation() {
         return daysVacation;
     }
 
     // Validation Rules:
     // - min cannot be less than 0
     // -- max cannot be more than 120
-    public void setDaysVacation(int daysVacation) throws IllegalArgumentException {
+    public final void setDaysVacation(int daysVacation) throws IllegalArgumentException {
         if(daysVacation < 0 || daysVacation >  120){
             throw new IllegalArgumentException("Sorry, vacation days must be between 0 and 120 inclusive.");            
         }
@@ -55,17 +55,19 @@ public class Employee {
         
     }
 
-    public String getFirstName() {
+    public final String getFirstName() {
         return firstName;
     }
 
     
-    public final void setFirstName(String firstName) {
-       
+    public final void setFirstName(String firstName) throws IllegalArgumentException {
+        if (firstName == null || firstName.isEmpty()){
+            throw new IllegalArgumentException("Sorry, please enter a value for first name.");
+        }
         this.firstName = firstName;
     }
 
-    public String getLastName() {
+    public final String getLastName() {
         return lastName;
     }
     //Validation Rules:
@@ -74,8 +76,10 @@ public class Employee {
     // -- no special symbols
     // -- min length of 1
     // -- max length of 50
-    public void setLastName(String lastName) {
-        
+    public final void setLastName(String lastName) throws IllegalArgumentException {
+        if (lastName == null || lastName.isEmpty()){
+            throw new IllegalArgumentException("Sorry, please enter a value for last name.");
+        }
         this.lastName = lastName;
     }
 
@@ -83,7 +87,7 @@ public class Employee {
         return ssn;
     }
 
-    public void setSsn(String ssn) {
+    public final void setSsn(String ssn) {
         
         this.ssn = ssn;
     }
